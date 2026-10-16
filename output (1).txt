@@ -1,0 +1,70 @@
+Seed = 12345 | sizeof(Node)=16, sizeof(AdjList)=808, sizeof(AdjMatrix)=10000
+
+==================== Sparse Graph (V=100, E=100) ====================
+두 표현 방식이 같은 그래프인지 검증: OK
+
+실험 대상 (두 방식에 동일하게 적용):
+  삽입 간선     : (97, 39)  [존재하지 않음]
+  삭제 간선     : (30, 79)  [존재함]
+  연결 확인     : (40, 74)  -> 간선 없음
+  인접 정점 출력: 정점 91
+
+Case 1 : Sparse Graph - Adjacency Matrix
+Memory                         : 10000 Bytes
+Edge insertion comparisons     : 1
+Edge deletion comparisons      : 1
+Connectivity check comparisons : 1
+Adjacent vertices comparisons  : 100
+  인접 정점: 정점 91 (인접 정점 3개): 35 76 96
+
+Case 2 : Sparse Graph - Adjacency List
+Memory                         : 4008 Bytes
+Edge insertion comparisons     : 2
+Edge deletion comparisons      : 7
+Connectivity check comparisons : 2
+Adjacent vertices comparisons  : 3
+  인접 정점: 정점 91 (인접 정점 3개): 35 96 76
+
+두 방식의 인접 정점 집합 비교: 동일
+
+--- 무작위 1000회 실험 평균 (Sparse) ---
+연산                      인접 행렬 인접 리스트
+간선 삽입                        1.00           1.88
+간선 삭제                        1.00           4.03
+연결 여부 확인                 1.00           2.00
+인접 정점 출력               100.00           2.00
+
+==================== Dense Graph (V=100, E=4000) ====================
+두 표현 방식이 같은 그래프인지 검증: OK
+
+실험 대상 (두 방식에 동일하게 적용):
+  삽입 간선     : (21, 80)  [존재하지 않음]
+  삭제 간선     : (40, 33)  [존재함]
+  연결 확인     : (30, 39)  -> 간선 없음
+  인접 정점 출력: 정점 63
+
+Case 3 : Dense Graph - Adjacency Matrix
+Memory                         : 10000 Bytes
+Edge insertion comparisons     : 1
+Edge deletion comparisons      : 1
+Connectivity check comparisons : 1
+Adjacent vertices comparisons  : 100
+  인접 정점: 정점 63 (인접 정점 87개): 0 1 2 3 4 5 6 9 10 12 13 14 15 16 18 19 20 21 22 23 24 25 27 28 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 47 48 49 50 51 52 53 54 55 56 57 58 60 61 62 64 65 66 67 68 69 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 97 98 99
+
+Case 4 : Dense Graph - Adjacency List
+Memory                         : 128808 Bytes
+Edge insertion comparisons     : 80
+Edge deletion comparisons      : 50
+Connectivity check comparisons : 79
+Adjacent vertices comparisons  : 87
+  인접 정점: 정점 63 (인접 정점 87개): 74 20 50 10 97 57 89 92 82 30 60 41 72 32 65 40 66 16 28 76 62 67 3 93 88 86 34 39 81 73 47 79 58 36 91 75 55 85 83 25 14 31 12 44 77 33 15 69 5 43 45 0 2 49 99 56 6 98 27 54 24 78 68 35 19 51 38 64 13 87 61 84 37 42 22 48 21 53 80 52 18 4 90 23 71 1 9
+
+두 방식의 인접 정점 집합 비교: 동일
+
+--- 무작위 1000회 실험 평균 (Dense) ---
+연산                      인접 행렬 인접 리스트
+간선 삽입                        1.00          79.22
+간선 삭제                        1.00          82.58
+연결 여부 확인                 1.00          48.55
+인접 정점 출력               100.00          80.18
+
